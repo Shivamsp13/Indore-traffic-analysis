@@ -74,20 +74,33 @@ public class TrafficService {
     }
 
     // 🔥 UPDATED METHOD (VERY IMPORTANT)
-    public Map<String,String> getSeveritySummary() {
+    public Map<String, String> getSeveritySummary(){
 
-        Map<String,Integer> scoreMap = getSeverityScoreByLocation();
-        Map<String,String> result = new HashMap<>();
+        List<TrafficReport> reports = trafficReportRepository.findAll();
 
-        List<Location> locations = locationRepository.findAll();
+        Map<String, Integer> scoreMap = new HashMap<>();
 
-        for(Location loc : locations){
+        for(TrafficReport r : reports){
 
-            String name = loc.getName();
-            int score = scoreMap.getOrDefault(name, 0);
+            int value = 0;
 
-            // ✅ ALWAYS assign severity
-            result.put(name, getSeverityLabel(score) + " (" + score + " score)");
+            if(r.getLevel().equalsIgnoreCase("High")) value = 3;
+            else if(r.getLevel().equalsIgnoreCase("Medium")) value = 2;
+            else value = 1;
+
+            scoreMap.put(r.getLocation(),
+                    scoreMap.getOrDefault(r.getLocation(), 0) + value);
+        }
+
+        Map<String, String> result = new HashMap<>();
+
+        for(String loc : scoreMap.keySet()){
+
+            int score = scoreMap.get(loc);
+
+            if(score >= 8) result.put(loc, "Severe");
+            else if(score >= 4) result.put(loc, "Moderate");
+            else result.put(loc, "Low");
         }
 
         return result;
