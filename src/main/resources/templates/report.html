@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Report Traffic</title>
+  <style>
+    body {
+        background: #f5f7fa;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        border-radius: 12px;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+  <div class="container-fluid">
+
+    <a class="navbar-brand text-white" href="/">🚦 Traffic System</a>
+
+    <div>
+      <a class="btn btn-outline-light me-2" href="/">Home</a>
+      <a class="btn btn-outline-light me-2" href="/map">Map</a>
+      <a class="btn btn-outline-light me-2" href="/dashboard">Dashboard</a>
+      <a class="btn btn-outline-light me-2" href="/report">Report</a>
+      <a class="btn btn-outline-light me-2" href="/suggest">Suggest</a>
+      <a class="btn btn-outline-light" href="/analysis">Analysis</a>
+      <a class="btn btn-outline-light me-2" href="/map-advanced">Advanced Map</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <h2>🚨 Report Traffic</h2>
+
+  <form action="/report/save" method="post" class="mt-3">
+
+    <div class="mb-3">
+      <label>Location</label>
+      <input type="text" name="location" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Traffic Level</label>
+      <select name="level" class="form-control">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <input type="text" name="description" class="form-control">
+    </div>
+
+    <button class="btn btn-danger">Submit</button>
+
+  </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traffic Map</title>
+  <style>
+    body {
+        background: #f5f7fa;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        border-radius: 12px;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+  <style>
+    #map {
+        height: 100vh;
+        width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+  <div class="container-fluid">
+
+    <a class="navbar-brand text-white" href="/">🚦 Traffic System</a>
+
+    <div>
+      <a class="btn btn-outline-light me-2" href="/">Home</a>
+      <a class="btn btn-outline-light me-2" href="/map">Map</a>
+      <a class="btn btn-outline-light me-2" href="/dashboard">Dashboard</a>
+      <a class="btn btn-outline-light me-2" href="/report">Report</a>
+      <a class="btn btn-outline-light me-2" href="/suggest">Suggest</a>
+      <a class="btn btn-outline-light" href="/analysis">Analysis</a>
+      <a class="btn btn-outline-light me-2" href="/map-advanced">Advanced Map</a>
+    </div>
+
+  </div>
+</nav>
+
+<div id="map"></div>
+
+<script>
+  function initMap() {
+
+      // 📍 Center (change to your city if needed)
+      const center = { lat: 22.7196, lng: 75.8577 }; // Indore
+
+      // 🗺️ Create Map
+      const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: center
+      });
+
+      // 🚦 1. GOOGLE LIVE TRAFFIC
+      const trafficLayer = new google.maps.TrafficLayer();
+      trafficLayer.setMap(map);
+
+      // 📌 2. SAMPLE MARKERS (your custom traffic reports)
+      const data = [
+          {
+              lat: 22.7196,
+              lng: 75.8577,
+              severity: "HIGH",
+              description: "Accident here"
+          },
+          {
+              lat: 22.73,
+              lng: 75.86,
+              severity: "MEDIUM",
+              description: "Heavy traffic"
+          },
+          {
+              lat: 22.70,
+              lng: 75.84,
+              severity: "LOW",
+              description: "Normal flow"
+          }
+      ];
+
+      // 🔴 Add markers
+      data.forEach(item => {
+
+          let color;
+
+          if (item.severity === "HIGH") color = "red";
+          else if (item.severity === "MEDIUM") color = "orange";
+          else color = "green";
+
+          const marker = new google.maps.Marker({
+              position: { lat: item.lat, lng: item.lng },
+              map: map,
+              title: item.description,
+              icon: {
+                  url: `http://maps.google.com/mapfiles/ms/icons/${color}-dot.png`
+              }
+          });
+
+          const info = new google.maps.InfoWindow({
+              content: `<b>${item.description}</b><br>Severity: ${item.severity}`
+          });
+
+          marker.addListener("click", () => {
+              info.open(map, marker);
+          });
+      });
+  }
+</script>
+
+<!-- ✅ PUT YOUR API KEY HERE -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKJDdyjLd0z-3sR1euLlK54roZEO4vHRQ&callback=initMap" async defer></script>
+
+</body>
+</html>

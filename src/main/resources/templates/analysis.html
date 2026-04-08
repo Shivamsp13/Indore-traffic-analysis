@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Traffic Analysis</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+        background: #f5f7fa;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        border-radius: 12px;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="/">🚦 Traffic System</a>
+
+    <div>
+      <a class="btn btn-outline-light me-2" href="/">Home</a>
+      <a class="btn btn-outline-light me-2" href="/map">Map</a>
+      <a class="btn btn-outline-light me-2" href="/dashboard">Dashboard</a>
+      <a class="btn btn-outline-light me-2" href="/report">Report</a>
+      <a class="btn btn-outline-light me-2" href="/suggest">Suggest</a>
+      <a class="btn btn-outline-light" href="/analysis">Analysis</a>
+      <a class="btn btn-outline-light me-2" href="/map-advanced">Advanced Map</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <h1 class="mb-4">🧠 Traffic Intelligence Dashboard</h1>
+
+  <!-- 🔥 SYSTEM INSIGHTS -->
+  <div class="row mb-4">
+
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <h5>Total Reports</h5>
+        <h3 th:text="${totalReports}"></h3>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <h5>Most Congested Area</h5>
+        <h6 th:text="${mostCongested}"></h6>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-3 shadow-sm">
+        <h5>Peak Traffic Time</h5>
+        <h6 th:text="${peakTime}"></h6>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 📊 LEVEL DISTRIBUTION -->
+  <div class="card p-3 mb-4 shadow-sm">
+    <h5>📊 Traffic Level Distribution</h5>
+
+    <ul>
+      <li th:each="entry : ${levelData}">
+        <b th:text="${entry.key}"></b> :
+        <span th:text="${entry.value}"></span> reports
+      </li>
+    </ul>
+  </div>
+
+  <!-- 📍 LOCATION ANALYSIS -->
+  <div class="card p-3 mb-4 shadow-sm">
+    <h5>📍 Reports by Location</h5>
+
+    <ul>
+      <li th:each="entry : ${countMap}">
+        <b th:text="${entry.key}"></b> :
+        <span th:text="${entry.value}"></span> reports
+      </li>
+    </ul>
+  </div>
+
+  <!-- 🧠 INSIGHTS -->
+  <div class="card p-3 mb-4 shadow-sm">
+    <h5>🧠 Key Insights</h5>
+
+    <ul>
+      <li>Traffic congestion is concentrated in high-density urban areas</li>
+      <li>Repeated reports indicate persistent bottlenecks</li>
+      <li>Evening hours show peak congestion due to commuting patterns</li>
+      <li>User-reported data highlights real-time problem zones</li>
+    </ul>
+  </div>
+
+  <!-- 💡 RECOMMENDATIONS -->
+  <div class="card p-3 mb-4 shadow-sm">
+    <h5>💡 Recommended Actions</h5>
+
+    <ul>
+      <li>Implement adaptive traffic signal control</li>
+      <li>Deploy traffic personnel at high congestion zones</li>
+      <li>Promote carpooling and shared mobility</li>
+      <li>Improve public transport frequency and coverage</li>
+      <li>Introduce smart parking systems in crowded areas</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

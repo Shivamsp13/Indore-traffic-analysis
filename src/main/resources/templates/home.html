@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home</title>
+  <style>
+    body {
+        background: #f5f7fa;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        border-radius: 12px;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+  <div class="container-fluid">
+
+    <a class="navbar-brand text-white" href="/">🚦 Traffic System</a>
+
+    <div>
+      <a class="btn btn-outline-light me-2" href="/">Home</a>
+      <a class="btn btn-outline-light me-2" href="/map">Map</a>
+      <a class="btn btn-outline-light me-2" href="/dashboard">Dashboard</a>
+      <a class="btn btn-outline-light me-2" href="/report">Report</a>
+      <a class="btn btn-outline-light me-2" href="/suggest">Suggest</a>
+      <a class="btn btn-outline-light" href="/analysis">Analysis</a>
+      <a class="btn btn-outline-light me-2" href="/map-advanced">Advanced Map</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <h1 class="mb-4">📍 Traffic Zones</h1>
+
+  <a href="/add" class="btn btn-primary mb-3">➕ Add Zone</a>
+
+  <div class="row">
+
+    <div class="col-md-4" th:each="zone : ${zones}">
+      <div class="card shadow mb-4">
+        <div class="card-body">
+
+          <h5 class="card-title" th:text="${zone.name}"></h5>
+
+          <p><b>Area:</b> <span th:text="${zone.area}"></span></p>
+          <p><b>Peak Time:</b> <span th:text="${zone.peakTime}"></span></p>
+          <p><b>Cause:</b> <span th:text="${zone.cause}"></span></p>
+
+          <iframe
+                  th:src="'https://www.google.com/maps?q=' + ${zone.area} + '&output=embed'"
+                  class="w-100" height="200">
+          </iframe>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
