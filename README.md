@@ -1,68 +1,95 @@
-# 🚦 Traffic Congestion Analysis & Awareness System
+# 🚦 Indore Traffic Congestion Analysis & Awareness System
 
-A Spring Boot-based web application designed to analyze traffic congestion in Indore and provide insights using user-generated data, visualization, and smart analytics.
+A Spring Boot-based web application designed specifically to analyze traffic congestion in **Indore, Madhya Pradesh**, and provide insights using user-generated data, map visualization, and smart analytics.
 
 ---
 
 ## 📌 Project Overview
 
-This project focuses on understanding and visualizing traffic congestion using a combination of:
+Indore is one of India’s fastest-growing cities, facing increasing traffic congestion due to rapid urbanization.
 
-* 📊 Data analysis
-* 🗺️ Map-based visualization
-* 👥 User-generated traffic reports
-* 💡 Smart recommendations
+This project focuses on:
 
-It aims to promote awareness and assist in better urban mobility planning.
+* 📍 Identifying congestion hotspots in Indore
+* 📊 Analyzing traffic patterns using user reports
+* 🗺️ Visualizing traffic conditions using maps
+* 💡 Providing awareness and improvement suggestions
 
 ---
 
 ## 🚀 Features
 
-### 🗺️ Traffic Map
+### 🗺️ Indore Traffic Map
 
-* View congestion across multiple locations
+* View congestion across major areas like:
+
+  * Vijay Nagar
+  * Palasia
+  * Rajwada
+  * Bhawarkuan
 * Google Maps integration
 * Severity-based visualization
+
+---
 
 ### 🚦 Advanced Map (🔥 Highlight Feature)
 
 * Google Maps JavaScript API
-* Live traffic layer
-* Colored markers (Low / Moderate / Severe)
+* Live traffic layer (real-time traffic colors)
+* Colored markers based on congestion:
+
+  * 🔴 Severe
+  * 🟡 Moderate
+  * 🟢 Low
 * Filter markers by severity
+
+---
 
 ### 📊 Dashboard
 
-* Total zones & reports
+* Total traffic zones in Indore
+* Total reports submitted
 * Most congested area detection
 * Traffic level distribution (Chart.js)
 
+---
+
 ### 🚨 Traffic Reporting System
 
-* Users can report traffic conditions
-* Levels: Low, Medium, High
+* Users can report traffic in Indore
+* Levels:
+
+  * Low
+  * Medium
+  * High
 * Timestamp-based tracking
+
+---
 
 ### 🔍 Search & Filter
 
-* Search reports by location
-* Filter by traffic level
+* Search reports by Indore locations
+* Filter based on traffic level
+
+---
 
 ### 💬 Suggestions System
 
-* Users can provide feedback & solutions
+* Users can submit ideas to improve traffic in Indore
+
+---
 
 ### 🧠 Analysis Page
 
-* Insights and learnings from other cities
-* Suggested improvements for Indore
+* Insights on Indore traffic patterns
+* Comparison with cities like Bangalore & Delhi
+* Suggested improvements for better traffic management
 
 ---
 
 ## 🧠 How It Works
 
-1. Users submit traffic reports
+1. Users submit traffic reports for Indore locations
 
 2. System assigns scores:
 
@@ -70,17 +97,17 @@ It aims to promote awareness and assist in better urban mobility planning.
    * Medium = 2
    * Low = 1
 
-3. Total score determines severity:
+3. Total score determines congestion severity:
 
    * 0–3 → Low
    * 4–7 → Moderate
    * 8+ → Severe
 
-4. Results are visualized using:
+4. Results are visualized through:
 
-   * Maps
-   * Dashboard
-   * Charts
+   * 📍 Maps
+   * 📊 Dashboard
+   * 📈 Charts
 
 ---
 
@@ -96,9 +123,9 @@ It aims to promote awareness and assist in better urban mobility planning.
 
 ## 📷 Screenshots (Add later)
 
-* Home Page
+* Home Page (Indore Zones)
 * Dashboard
-* Map View
+* Traffic Map
 * Advanced Map
 
 ---
@@ -133,9 +160,9 @@ http://localhost:8080
 
 ## 🎯 Future Improvements
 
-* Real-time traffic APIs integration
-* Route optimization
-* Machine learning prediction
+* Integration with real-time traffic APIs
+* Route optimization for Indore roads
+* Machine learning-based congestion prediction
 * User authentication system
 
 ---
@@ -145,3 +172,7 @@ http://localhost:8080
 **Shivam Pandey**
 
 ---
+
+## ⭐ If you like this project
+
+Give it a star ⭐ on GitHub!
